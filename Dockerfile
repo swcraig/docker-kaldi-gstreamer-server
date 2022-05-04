@@ -34,7 +34,8 @@ RUN apt-get update && apt-get install -y  \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
     pip install ws4py==0.3.2 && \
-    pip install tornado && \    
+    pip install tornado && \
+    pip install g2p_en && \
     ln -s /usr/bin/python2.7 /usr/bin/python ; ln -s -f bash /bin/sh
 
 WORKDIR /opt
@@ -74,4 +75,4 @@ RUN git clone https://github.com/kaldi-asr/kaldi && \
 COPY start.sh stop.sh /opt/
 
 RUN chmod +x /opt/start.sh && \
-    chmod +x /opt/stop.sh 
+    chmod +x /opt/stop.sh
