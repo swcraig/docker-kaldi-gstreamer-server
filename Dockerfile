@@ -39,8 +39,16 @@ RUN apt-get update && apt-get install -y  \
     pip install g2p_en && \
     ln -s /usr/bin/python2.7 /usr/bin/python ; ln -s -f bash /bin/sh
 
+ARG base=debian:buster
+
+## Install official Intel MKL repository for apt
+## Commands below adapted from:
+##     https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-apt-repo
+##     https://github.com/eddelbuettel/mkl4deb
+FROM nobodyxu/apt-fast:latest-debian-buster-slim AS install-mkl
+
 # Install basic software for adding apt repository and downloading source code to compile
-RUN apt-get install -y --no-install-recommends apt-transport-https ca-certificates gnupg2 gnupg-agent \
+RUN apt-auto install -y --no-install-recommends apt-transport-https ca-certificates gnupg2 gnupg-agent \
                                                 software-properties-common curl apt-utils
 
 # Add key
@@ -49,7 +57,7 @@ RUN echo deb https://apt.repos.intel.com/mkl all main > /etc/apt/sources.list.d/
 
 # Install MKL
 ARG year=2020
-RUN apt-get install -y '$(apt-cache search intel-mkl-$year | cut -d '-' -f 1,2,3,4  | tail -n 1)'
+RUN apt-auto install -y '$(apt-cache search intel-mkl-$year | cut -d '-' -f 1,2,3,4  | tail -n 1)'
 
 FROM $base AS configure-mkl
 COPY --from=install-mkl /opt/intel/ /opt/intel/
