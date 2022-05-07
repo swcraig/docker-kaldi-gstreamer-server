@@ -69,7 +69,7 @@ RUN git clone https://github.com/kaldi-asr/kaldi && \
     rm -rf /opt/kaldi/egs/ /opt/kaldi/windows/ /opt/kaldi/misc/ && \
     find /opt/kaldi/src/ -type f -not -name '*.so' -delete && \
     find /opt/kaldi/tools/ -type f \( -not -name '*.so' -and -not -name '*.so*' \) -delete && \
-    cd /opt && git clone https://github.com/alumae/kaldi-gstreamer-server.git && \
+    cd /opt && git clone https://github.com/swcraig/kaldi-gstreamer-server.git && \
     rm -rf /opt/kaldi-gstreamer-server/.git/ && \
     rm -rf /opt/kaldi-gstreamer-server/test/
 
