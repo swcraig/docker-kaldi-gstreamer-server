@@ -26,7 +26,6 @@ RUN apt-get update && apt-get install -y  \
     python-yaml \
     python-simplejson \
     python-gi \
-    pyyaml \
     subversion \
     unzip \
     wget \
@@ -39,6 +38,7 @@ RUN apt-get update && apt-get install -y  \
     python3 -m pip install ws4py==0.3.2 && \
     python3 -m pip install tornado && \
     python3 -m pip install g2p_en && \
+    python3 -m pip install pyyaml && \
     ln -s /usr/bin/python3 /usr/bin/python ; ln -s -f bash /bin/sh
 
 WORKDIR /opt
