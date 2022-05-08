@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y  \
     python-yaml \
     python-simplejson \
     python-gi \
+    pyyaml \
     subversion \
     unzip \
     wget \
@@ -35,9 +36,9 @@ RUN apt-get update && apt-get install -y  \
     zlib1g-dev && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
-    pip install ws4py==0.3.2 && \
-    pip install tornado && \
-    pip install g2p_en && \
+    python3 -m pip install ws4py==0.3.2 && \
+    python3 -m pip install tornado && \
+    python3 -m pip install g2p_en && \
     ln -s /usr/bin/python3 /usr/bin/python ; ln -s -f bash /bin/sh
 
 WORKDIR /opt
