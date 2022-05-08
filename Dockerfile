@@ -21,7 +21,8 @@ RUN apt-get update && apt-get install -y  \
     make \
     python2.7 \
     python3 \
-    python-pip \
+    python3-gi \
+    python3-pip \
     python-yaml \
     python-simplejson \
     python-gi \
